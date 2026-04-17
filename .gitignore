@@ -1,0 +1,15 @@
+/config/*.local.php
+/config/terms
+/kernel/Install/Lock
+/runtime/
+/debug.log
+/start.bat
+/stop.bat
+/restart.bat
+/nginx.conf
+/nginx.conf.example
+/php.ini.example
+/INSTALL_GUIDE.md
+/LARAGON_SETUP.md
+/MANUAL_SETUP.md
+

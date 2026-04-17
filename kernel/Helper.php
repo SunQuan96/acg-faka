@@ -106,10 +106,21 @@ if (!function_exists("config")) {
             return $data;
         }
         $file = BASE_PATH . '/config/' . $name . ".php";
-        if (!file_exists($file)) {
+        $localFile = BASE_PATH . '/config/' . $name . ".local.php";
+
+        if (!file_exists($file) && !file_exists($localFile)) {
             return [];
         }
-        $data = require($file);
+
+        $data = file_exists($file) ? require($file) : [];
+
+        if (file_exists($localFile)) {
+            $localData = require($localFile);
+            if (is_array($localData)) {
+                $data = array_replace($data, $localData);
+            }
+        }
+
         \Kernel\Util\Context::set("config_" . $name, $data);
         return $data;
     }
